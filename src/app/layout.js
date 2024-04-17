@@ -1,7 +1,6 @@
-import { Inter } from "next/font/google";
+import SideBar from "@/components/SideBar";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,8 +9,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html className="darks">
+      <body className="dark:bg-body bg-white font-[Sora] dark:text-white text-dark">
+        <Header />
+        <main>
+          <div className="container grid lg:grid-cols-[218px_1fr] gap-[3.5rem]">
+            <SideBar />
+            {children}
+            <div id="modal-root-content" />
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
